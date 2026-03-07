@@ -298,36 +298,79 @@ h1 {
   gap: 0.75rem;
 }
 
-.cta-button {
+.copy-block {
+  padding: 1rem;
+  border-radius: var(--radius-card);
+  border: 1px solid color-mix(in srgb, var(--primary) 16%, var(--outline));
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.copy-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.copy-block__eyebrow {
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.copy-block__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
-  padding: 0 1.25rem;
+  min-height: 2.5rem;
+  padding: 0 0.95rem;
+  border: 0;
   border-radius: var(--radius-pill);
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.cta-button--primary {
   background: var(--primary);
-  color: white;
-  box-shadow: 0 10px 30px rgba(26, 115, 232, 0.22);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 24px rgba(26, 115, 232, 0.18);
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, background-color 0.2s ease;
 }
 
-.cta-button--primary:hover {
+.copy-block__button:hover,
+.copy-block__button:focus-visible {
   filter: brightness(1.06);
+  outline: none;
 }
 
-.cta-button--outlined {
-  border: 1px solid var(--outline);
-  color: var(--on-surface);
-  background: transparent;
+.copy-block__button:active {
+  transform: scale(0.98);
 }
 
-.cta-button--outlined:hover {
-  background: color-mix(in srgb, var(--primary) 5%, transparent);
+.copy-block__button.is-copied {
+  background: #0f9d58;
+  box-shadow: 0 10px 24px rgba(15, 157, 88, 0.18);
+}
+
+.copy-block__value {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.copy-block__hint {
+  margin: 0.8rem 0 0;
+  color: var(--on-surface-variant);
+  font-size: 0.92rem;
 }
 
 .status-grid {
