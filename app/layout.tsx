@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
-import { Fraunces, Public_Sans } from "next/font/google";
+import { Roboto, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const shareTechMono = Share_Tech_Mono({
+  variable: "--font-share-tech-mono",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const publicSans = Public_Sans({
-  variable: "--font-public-sans",
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
   title: "ChatGPT Subscription Activation Guide",
   description:
-    "A clear, step-by-step guide for completing ChatGPT subscription activation in a browser.",
+    "A Matrix-themed activation guide for completing ChatGPT subscription activation in a browser.",
 };
 
 export default function RootLayout({
@@ -25,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fraunces.variable} ${publicSans.variable} antialiased`}>
+      <body className={`${shareTechMono.variable} ${roboto.variable} antialiased`}>
         {children}
       </body>
     </html>
