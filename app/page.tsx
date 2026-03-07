@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { MatrixRain } from "./components/matrix-rain";
 
 const steps = [
   {
@@ -88,10 +87,11 @@ const faqs = [
 export default function Home() {
   return (
     <>
-      <MatrixRain />
-
       <nav aria-label="Main navigation">
         <div className="nav-container">
+          <a className="brand-mark link-shimmer-inline" href="#overview">
+            ChatGPT Subscription Activation Guide
+          </a>
           <ul className="nav-menu">
             <li>
               <a href="#overview">Overview</a>
@@ -110,12 +110,15 @@ export default function Home() {
       </nav>
 
       <main className="container">
-        <header id="overview">
-          <div className="eyebrow">SYSTEM GUIDE // CHATGPT SUBSCRIPTION ACTIVATION</div>
+        <header className="hero-shell" id="overview">
+          <div className="hero-gradient" aria-hidden="true" />
+          <div className="hero-surface">
+            <div className="eyebrow">Activation guide</div>
           <h1>ChatGPT Subscription Activation Guide</h1>
           <p className="subtitle">
-            Same site theme. No extra branding. Just the activation flow, the session
-            endpoint, and the screenshots needed to complete it correctly.
+            A focused activation walkthrough styled to feel at home inside the
+            AZLabs.ai site system. No extra marketplace clutter, just the exact flow,
+            screenshots, and checks required to complete activation cleanly.
           </p>
 
           <div className="contact-info">
@@ -128,21 +131,26 @@ export default function Home() {
           </div>
 
           <div className="hero-grid">
-            <div className="terminal-card">
-              <div className="terminal-header">
-                <span className="terminal-dot" />
-                <span className="terminal-dot" />
-                <span className="terminal-dot" />
-                <span className="terminal-title">activation-checklist.sh</span>
+            <div className="hero-copy-card">
+              <div className="hero-copy-meta">Quick run-through</div>
+              <h2 className="hero-copy-title">The whole process is short, but the session step has to be exact.</h2>
+              <p className="hero-copy-text">
+                Sign in in-browser, open the session endpoint in the same login context,
+                copy the full output, and submit it without editing it.
+              </p>
+              <div className="hero-cta-row">
+                <a
+                  className="cta-button cta-button--primary"
+                  href="https://chatgpt.com/api/auth/session"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open session endpoint
+                </a>
+                <a className="cta-button cta-button--outlined" href="#steps">
+                  Review the steps
+                </a>
               </div>
-              <ol className="terminal-list">
-                <li>Open ChatGPT in a browser.</li>
-                <li>Log in to the target account.</li>
-                <li>Open the session endpoint in the same tab context.</li>
-                <li>Copy the full session output.</li>
-                <li>Paste it into the seller form.</li>
-                <li>Wait about one minute for activation.</li>
-              </ol>
             </div>
 
             <div className="status-grid">
@@ -164,15 +172,19 @@ export default function Home() {
               </div>
             </div>
           </div>
+          </div>
         </header>
 
         <section className="section" id="steps">
-          <h2>Activation Steps</h2>
-          <p>
-            Follow the sequence exactly. The session page must be opened after login in the
-            same browser context, and the copied output must be submitted without trimming
-            or rewriting it.
-          </p>
+          <div className="section-header">
+            <p className="section-eyebrow">Steps</p>
+            <h2>Activation steps</h2>
+            <p className="section-description">
+              Follow the sequence exactly. The session page must be opened after login in
+              the same browser context, and the copied output must be submitted without
+              trimming or rewriting it.
+            </p>
+          </div>
 
           <div className="jobs">
             {steps.map((step) => (
@@ -207,7 +219,14 @@ export default function Home() {
         </section>
 
         <section className="section" id="faq">
-          <h2>Failure Checks</h2>
+          <div className="section-header">
+            <p className="section-eyebrow">Checks</p>
+            <h2>Failure checks</h2>
+            <p className="section-description">
+              These are the common points of failure from the source guide, kept in a
+              tighter support-card format that matches the parent site aesthetic.
+            </p>
+          </div>
           <div className="skills">
             <article className="skill note-card">
               <div className="skill-name">If the page only shows {`{}`}</div>
@@ -227,11 +246,15 @@ export default function Home() {
         </section>
 
         <section className="section" id="source">
-          <h2>Source Trace</h2>
+          <div className="section-header">
+            <p className="section-eyebrow">Source</p>
+            <h2>Source trace</h2>
+          </div>
           <p>
             The instruction copy and screenshots are adapted from the original activation
-            guide, while the page styling is aligned with the Matrix-themed parent site
-            codebase that this guide may later live under.
+            guide, while the visual system here is now inspired by the real AZLabs.ai
+            codebase: semantic surface tokens, soft blur cards, rounded buttons, clean
+            section spacing, and a restrained blue-accent product site feel.
           </p>
           <div className="contact-info">
             <a href="https://www.g2a.com/instruction/marketplace/293/chatgpt-code" target="_blank" rel="noreferrer">

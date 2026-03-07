@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Roboto, Share_Tech_Mono } from "next/font/google";
+import { Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
 
-const shareTechMono = Share_Tech_Mono({
-  variable: "--font-share-tech-mono",
+const googleSansFlex = Google_Sans_Flex({
+  variable: "--font-google-sans",
   subsets: ["latin"],
-  weight: "400",
-});
-
-const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "ChatGPT Subscription Activation Guide",
   description:
-    "A Matrix-themed activation guide for completing ChatGPT subscription activation in a browser.",
+    "An AZLabs.ai-inspired activation guide for completing ChatGPT subscription activation in a browser.",
 };
 
 export default function RootLayout({
@@ -27,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${shareTechMono.variable} ${roboto.variable} antialiased`}>
+      <body className={`${googleSansFlex.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
