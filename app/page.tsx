@@ -20,9 +20,6 @@ export default function Home() {
             <li>
               <a href="#faq">FAQ</a>
             </li>
-            <li>
-              <a href="#source">Source</a>
-            </li>
           </ul>
         </div>
       </nav>
@@ -145,24 +142,6 @@ export default function Home() {
                 <p>{item.answer}</p>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section className="section" id="source">
-          <div className="section-header">
-            <p className="section-eyebrow">Source</p>
-            <h2>Source trace</h2>
-          </div>
-          <p>
-            The instruction copy and screenshots are adapted from the original activation
-            guide. This page keeps the content focused on helping the user complete the
-            process with as little friction as possible.
-          </p>
-          <div className="contact-info">
-            <a href="https://www.g2a.com/instruction/marketplace/293/chatgpt-code" target="_blank" rel="noreferrer">
-              Original guide
-            </a>
-            <a href="#overview">Back to top</a>
           </div>
         </section>
       </main>
