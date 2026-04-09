@@ -1,22 +1,19 @@
-import type { Metadata } from "next";
-import { Fraunces, Public_Sans } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Fraunces, Public_Sans } from 'next/font/google';
+import { defaultMetadata } from './lib/seo';
+import './globals.css';
 
 const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
+  variable: '--font-fraunces',
+  subsets: ['latin'],
 });
 
 const publicSans = Public_Sans({
-  variable: "--font-public-sans",
-  subsets: ["latin"],
+  variable: '--font-public-sans',
+  subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: "ChatGPT Subscription Activation Guide",
-  description:
-    "A clear, step-by-step guide for completing ChatGPT subscription activation in a browser.",
-};
+export const metadata: Metadata = defaultMetadata;
 
 export default function RootLayout({
   children,

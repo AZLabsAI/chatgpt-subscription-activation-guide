@@ -1,86 +1,12 @@
-import Image from "next/image";
-
-const steps = [
-  {
-    number: "01",
-    title: "Open ChatGPT in a browser",
-    description:
-      "Use a desktop or mobile browser to open ChatGPT. Do not start this flow inside the mobile app.",
-    bullets: ["A browser session is required for the activation flow to work correctly."],
-    image: {
-      src: "/guide/step-1-login.webp",
-      alt: "ChatGPT browser screen with the login button highlighted",
-      caption: "Start on the browser version of ChatGPT and choose Log in.",
-    },
-  },
-  {
-    number: "02",
-    title: "Sign in to your account",
-    description:
-      "Log in with the account that should receive the subscription. If prompted, complete the standard sign-in flow first.",
-    bullets: ["If a sign-in modal appears, continue through it before moving to the next step."],
-    image: {
-      src: "/guide/step-1-login-modal.webp",
-      alt: "ChatGPT login modal with sign-in options",
-      caption: "Complete the sign-in prompt until your browser session is active.",
-    },
-  },
-  {
-    number: "03",
-    title: "Open the session page",
-    description:
-      "After you are signed in, open the session endpoint directly in the same browser session.",
-    bullets: ["Use this exact URL: https://chatgpt.com/api/auth/session"],
-    image: {
-      src: "/guide/step-2-session.webp",
-      alt: "Browser tab showing the ChatGPT session page with account session data",
-      caption: "The session page should display account session text when you are logged in correctly.",
-    },
-  },
-  {
-    number: "04",
-    title: "Copy everything shown on the page",
-    description:
-      "Once the session page loads, copy the full text visible on screen. It should be the complete session output, not a partial selection.",
-    bullets: ["If the page shows only `{}`, you are not logged in properly and need to sign in again."],
-  },
-  {
-    number: "05",
-    title: "Paste the copied text into the seller form",
-    description:
-      "After purchase, paste the copied session text into the form provided for activation.",
-    bullets: ["Submit exactly what was copied from the session page."],
-  },
-  {
-    number: "06",
-    title: "Wait for activation to complete",
-    description:
-      "The subscription should activate automatically in about one minute after the session text is submitted.",
-    bullets: ["For extra safety, you can log out of all devices after activation is complete."],
-  },
-] as const;
-
-const faqs = [
-  {
-    question: "What if the session page only shows {}?",
-    answer:
-      "That usually means the browser session is not signed in correctly. Return to ChatGPT, log in again, and reopen the session link.",
-  },
-  {
-    question: "How long does activation usually take?",
-    answer:
-      "The original guide says the process is automatic and typically completes within about one minute after submission.",
-  },
-  {
-    question: "Should this be done in the mobile app?",
-    answer:
-      "No. The activation flow should be completed in a browser, even if you are on a phone.",
-  },
-] as const;
+import Image from 'next/image';
+import { JsonLd } from './components/JsonLd';
+import { faqs, preparationChecklist, steps } from './lib/content';
+import { buildFaqSchema, buildHowToSchema, SITE_URL } from './lib/seo';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(201,167,92,0.22),transparent_30%),linear-gradient(180deg,#f6f0e7_0%,#efe4d6_42%,#e3d3c3_100%)] text-stone-950">
+      <JsonLd data={[buildHowToSchema(steps), buildFaqSchema(faqs)]} />
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-5 py-8 sm:px-8 lg:px-12">
         <div className="guide-shell overflow-hidden rounded-[2rem] border border-black/10 bg-[#fffaf4]/90 shadow-[0_24px_80px_rgba(75,54,32,0.16)] backdrop-blur">
           <div className="grid gap-10 px-6 py-8 sm:px-10 sm:py-12 lg:grid-cols-[1.15fr_0.85fr] lg:px-14">
@@ -204,7 +130,7 @@ export default function Home() {
                         </ul>
                       ) : null}
 
-                      {"image" in step && step.image ? (
+                      {'image' in step && step.image ? (
                         <figure className="overflow-hidden rounded-[1.5rem] border border-stone-200 bg-[#f3ece4]">
                           <Image
                             src={step.image.src}
@@ -212,7 +138,7 @@ export default function Home() {
                             width={1280}
                             height={751}
                             className="h-auto w-full object-cover"
-                            priority={step.number === "01"}
+                            priority={step.number === '01'}
                           />
                           <figcaption className="border-t border-stone-200 px-4 py-3 text-sm leading-6 text-stone-600">
                             {step.image.caption}
@@ -239,6 +165,17 @@ export default function Home() {
             </section>
 
             <section className="rounded-[2rem] border border-stone-200 bg-white/80 p-6 shadow-[0_18px_50px_rgba(75,54,32,0.08)] sm:p-8">
+              <p className="text-sm uppercase tracking-[0.24em] text-stone-500">Before you submit</p>
+              <div className="mt-5 space-y-3">
+                {preparationChecklist.map((item) => (
+                  <div key={item} className="rounded-[1.5rem] border border-stone-200 bg-[#fffdfa] px-5 py-4 text-sm leading-6 text-stone-700">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="rounded-[2rem] border border-stone-200 bg-white/80 p-6 shadow-[0_18px_50px_rgba(75,54,32,0.08)] sm:p-8">
               <p className="text-sm uppercase tracking-[0.24em] text-stone-500">FAQ</p>
               <div className="mt-5 space-y-4">
                 {faqs.map((item) => (
@@ -259,14 +196,22 @@ export default function Home() {
                 Instruction copy and screenshots were adapted from the original activation
                 guide page, with marketplace branding and unrelated page content removed.
               </p>
-              <a
-                className="mt-4 inline-flex rounded-full border border-stone-300 px-4 py-2 text-sm font-semibold text-stone-800 transition-colors hover:bg-stone-950 hover:text-white"
-                href="https://www.g2a.com/instruction/marketplace/293/chatgpt-code"
-                target="_blank"
-                rel="noreferrer"
-              >
-                View original source
-              </a>
+              <div className="mt-4 flex flex-wrap gap-3 text-sm">
+                <a
+                  className="inline-flex rounded-full border border-stone-300 px-4 py-2 font-semibold text-stone-800 transition-colors hover:bg-stone-950 hover:text-white"
+                  href="https://www.g2a.com/instruction/marketplace/293/chatgpt-code"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View original source
+                </a>
+                <a
+                  className="inline-flex rounded-full border border-stone-300 px-4 py-2 font-semibold text-stone-800 transition-colors hover:bg-stone-950 hover:text-white"
+                  href={SITE_URL}
+                >
+                  Copy guide URL
+                </a>
+              </div>
             </section>
           </div>
         </section>
